@@ -1,68 +1,64 @@
-# 🎬 ASCII Video Player for Termux
+# ASCII Video Player for Termux
 
-![GitHub Repo stars](https://img.shields.io/github/stars/ftgamer2/ASCII-Video-Player?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/ftgamer2/ASCII-Video-Player?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/ftgamer2/ASCII-Video-Player?style=for-the-badge)
-![GitHub license](https://img.shields.io/github/license/ftgamer2/ASCII-Video-Player?style=for-the-badge)
-[![Termux](https://img.shields.io/badge/Termux-000000?style=for-the-badge&logo=termux&logoColor=white)](https://termux.com/)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+**LYNX · FTGAMERV2**
 
-**Convert any video into real-time ASCII art directly in your Android terminal!** Experience cinematic visuals in pure text with frame-accurate playback and parallel processing.
+![GitHub stars](https://img.shields.io/github/stars/ftgamer2/ASCII-Video-Player?style=for-the-badge) ![GitHub forks](https://img.shields.io/github/forks/ftgamer2/ASCII-Video-Player?style=for-the-badge) ![GitHub issues](https://img.shields.io/github/issues/ftgamer2/ASCII-Video-Player?style=for-the-badge) ![GitHub license](https://img.shields.io/github/license/ftgamer2/ASCII-Video-Player?style=for-the-badge)
 
-## 📸 Preview
+[![Termux](https://img.shields.io/badge/Termux-000000?style=for-the-badge&logo=termux&logoColor=white)](https://termux.com/) [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 
----
+Convert video into real-time ASCII art in an Android terminal, with frame-accurate playback and parallel processing.
 
-📂 Video path: /sdcard/video.mp4
-📏 ASCII width [80]: 100
-📊 Video info:
-Resolution: 1920x1080
-FPS: 30.00
-Duration: 120.5s
-Est. frames: 3615
-Est. render time: 18.1s
+## Preview
 
+Example console output:
 
-## ✨ Features
+```text
+Video path: /sdcard/video.mp4
+ASCII width [80]: 100
+Video info:
+  Resolution: 1920x1080
+  FPS: 30.00
+  Duration: 120.5s
+  Estimated frames: 3615
+  Estimated render time: 18.1s
+```
 
-- ⚡ **Ultra-fast parallel rendering** using multi-threading
-- 🎯 **Frame-accurate playback** with precise timing
-- 💾 **Smart caching system** - save renders for instant replay
-- 🔧 **Auto-dependency installation** - no manual setup needed
-- 📊 **Real-time stats** - FPS, drift, progress monitoring
-- 🎨 **Customizable ASCII density** - 10 levels from dark to light
-- 📱 **Termux optimized** - works perfectly on Android
+## Features
 
-## 🚀 Quick Start
+- Ultra-fast parallel rendering with multi-threading
+- Frame-accurate playback with precise timing
+- Smart caching for instant replay
+- Automatic dependency installation
+- Real-time FPS, drift, and progress statistics
+- Customizable ASCII density (10 levels, dark to light)
+- Termux-optimized Android workflow
+
+## Quick start
 
 ```bash
-# Clone and run
 git clone https://github.com/ftgamer2/ASCII-Video-Player.git
 cd ASCII-Video-Player
-
-# Make executable and run
 chmod +x player.py
 python player.py
 ```
 
-One-Liner Installation
+### One-line installation
 
 ```bash
 git clone https://github.com/ftgamer2/ASCII-Video-Player.git && cd ASCII-Video-Player && chmod +x player.py && python player.py
 ```
 
-📦 Installation
+## Installation
 
-Automatic (Recommended)
+### Automatic (recommended)
 
-The script automatically installs all dependencies:
+The script installs dependencies when needed. Run:
 
 ```bash
-# Just run the script!
 python player.py
 ```
 
-Manual Installation
+### Manual (Termux)
 
 ```bash
 pkg update && pkg upgrade -y
@@ -70,30 +66,28 @@ pkg install python ffmpeg -y
 pip install numpy pillow
 ```
 
-🎮 Usage
-
-Basic Usage
+## Usage
 
 ```bash
 # Interactive mode (recommended)
 python player.py
 
-# Direct video playback
+# Play a video directly
 python player.py /sdcard/DCIM/Camera/video.mp4
 
-# Custom width
+# Set a custom width
 python player.py video.mp4 --width 60
 ```
 
-Command Line Options
+Command-line form:
 
-```bash
+```text
 python player.py [video_path] [--width WIDTH]
 ```
 
-🔧 Configuration
+## Configuration
 
-You can customize the player by editing the config section in player.py:
+The README notes these settings in the configuration section of player.py:
 
 ```python
 # ASCII characters (dark to light)
@@ -109,95 +103,85 @@ MAX_WORKERS = 2
 RENDER_DIR = "/data/data/com.termux/files/usr/tmp/ascii_render"
 ```
 
-📊 Performance Benchmarks
+## Performance benchmarks
 
-Video Quality Render Time Playback FPS Accuracy
-480p (30s) 2.1s 29.98 99.93%
-720p (60s) 8.4s 29.99 99.97%
-1080p (30s) 6.7s 29.95 99.83%
+| Video | Render time | Playback FPS | Accuracy |
+|---|---:|---:|---:|
+| 480p (30s) | 2.1s | 29.98 | 99.93% |
+| 720p (60s) | 8.4s | 29.99 | 99.97% |
+| 1080p (30s) | 6.7s | 29.95 | 99.83% |
 
-🛠️ How It Works
+## How it works
 
-1. Frame Extraction: Uses FFmpeg to extract video frames
-2. ASCII Conversion: Converts each frame to ASCII using parallel processing
-3. Caching: Saves ASCII frames for future playback
-4. Playback: Displays frames with precise timing to match original FPS
+1. FFmpeg extracts video frames.
+2. Frames are converted to ASCII using parallel processing.
+3. ASCII frames are cached for future playback.
+4. Frames are displayed with timing intended to match the original FPS.
 
-🐛 Troubleshooting
+## Troubleshooting
 
-Common Issues
-
-Q: FFmpeg not found error
+**FFmpeg not found**
 
 ```bash
 pkg install ffmpeg -y
 ```
 
-Q: Python modules missing
+**Python modules missing**
 
 ```bash
 pip install numpy pillow
 ```
 
-Q: Slow performance on low-end devices
+**Slow performance on low-end devices**
 
-· Reduce MAX_WORKERS to 1 in the script
-· Use smaller ASCII width (40-60)
-· Close other apps running in Termux
+- Reduce MAX_WORKERS to 1 in the script.
+- Use a smaller ASCII width (40–60).
+- Close other apps running in Termux.
 
-Q: Can't access videos on SD card
+**Can't access videos on SD card**
 
 ```bash
 termux-setup-storage
 ```
 
-Q: Script crashes with memory error
+**Memory error**
 
-· Use shorter videos (under 2 minutes)
-· Reduce ASCII width
-· Restart Termux
+- Use shorter videos (under 2 minutes).
+- Reduce ASCII width.
+- Restart Termux.
 
-📁 Project Structure
+## Project structure
 
-```
+```text
 ASCII-Video-Player/
-├── player.py          # Main ASCII video player
-├── README.md         # Documentation
-├── LICENSE           # MIT License
-└── vid.mp4        # example video for testing
+├── player.py   # Main ASCII video player
+├── README.md   # Documentation
+├── LICENSE     # MIT License
+└── vid.mp4     # Example video for testing
 ```
 
-🤝 Contributing
+## Contributing
 
-We welcome contributions! Here's how:
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a pull request.
 
-1. Fork the repository
-2. Create a feature branch (git checkout -b feature/AmazingFeature)
-3. Commit your changes (git commit -m 'Add AmazingFeature')
-4. Push to the branch (git push origin feature/AmazingFeature)
-5. Open a Pull Request
+## License
 
-📄 License
+Distributed under the MIT License. See LICENSE for details.
 
-Distributed under the MIT License. See LICENSE for more information.
+## Author and acknowledgments
 
-👨‍💻 Author
+**ftgamer2** · [@ftgamer2](https://github.com/ftgamer2)
 
-ftgamer2
+Thanks to FFmpeg, Termux, and the Python community.
 
-· GitHub: @ftgamer2
-· Project: ASCII Video Player
+## Support
 
-🙏 Acknowledgments
-
-· FFmpeg for video processing
-· Termux for Android terminal environment
-· Python community for amazing libraries
-
-⭐ Support
-
-If you like this project, please give it a star! It helps others find it too.
+If you find this project useful, consider starring the repository.
 
 ---
 
-Made with ❤️ for the Termux community
+**LYNX · FTGAMERV2**
